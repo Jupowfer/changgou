@@ -1,0 +1,97 @@
+<div class="nav-top">
+        <div class="top">
+            <div class="py-container">
+                <div class="shortcut">
+                    <ul class="fl">
+                        <li class="f-item">畅购欢迎您！</li>
+                    </ul>
+                    <div class="fr typelist">
+                        <ul class="types">
+                            <li class="f-item" id="logininfo">
+                                <a href="http://www-changgou-java.itheima.net/home.html"><span id="loginname"></span></a>
+                            </li>
+							<li class="f-item" id="logouthandler">
+							    <a href="http://login-changgou-java.itheima.net/user/login/out"><span>退出</span></a>
+							</li>
+                            <li class="f-item" id="userlg">
+                                <span>
+                                    <a href="http://order-changgou-java.itheima.net/cart.html" target="_blank">我的购物车</a>
+                                </span>
+                            </li>
+							
+                            <li class="f-item" id="usernolg">
+                                <span>
+                                    <a href="http://login-changgou-java.itheima.net/login.html">登录</a>
+                                </span>
+                            </li>
+                            <li class="f-item">
+                                <span>畅购会员</span>
+                            </li>
+                            <li class="f-item">
+                                <span>企业采购</span>
+                            </li>
+                            <li class="f-item">
+                                <span>关注畅购</span>
+                            </li>
+                            <li class="f-item">
+                                <span>
+                                    <a href="cooperation.html" target="_blank">合作招商</a>
+                                </span>
+                            </li>
+                            <li class="f-item">
+                                <span>
+                                    <a href="shoplogin.html" target="_blank">商家后台</a>
+                                </span>
+                            </li>
+                            <li class="f-item">
+                                <span>网站导航</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!--头部-->
+        <div class="header">
+            <div class="py-container">
+                <div class="yui3-g Logo">
+                    <div class="yui3-u Left logoArea">
+                        <a class="logo-bd" title="畅购" href="http://www-changgou-java.itheima.net" target="_blank"></a>
+                    </div>
+                    <div class="yui3-u Rit searchArea">
+                        <div class="search">
+                            <form action="http://search-changgou-java.itheima.net/search/list" class="sui-form form-inline">
+                                <!--searchAutoComplete-->
+                                <div class="input-append">
+                                    <input type="text" id="autocomplete" class="input-error input-xxlarge" />
+                                    <a class="sui-btn btn-xlarge btn-danger" type="button" href="http://search-changgou-java.itheima.net/search/list">搜索</a>
+                                    
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+<script>
+	$(function(){
+		//用户信息加载
+		var arr,reg=new RegExp("(^| )cuname=([^;]*)(;|$)");
+		if(arr=document.cookie.match(reg)){
+			let cuname = unescape(arr[2]);
+			console.log(cuname);
+			document.getElementById('loginname').innerHTML = cuname;
+			document.getElementById('usernolg').style.display = "none";
+		}else{
+			let cuname = 'unlogin';
+			console.log(cuname);
+			document.getElementById('userlg').style.display = "none";
+			document.getElementById('logininfo').style.display = "none";
+			document.getElementById('logouthandler').style.display = "none";
+		}
+	});
+</script>

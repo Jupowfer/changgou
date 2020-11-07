@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Thymeleaf的入门</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<!--输出hello数据-->
+<p th:text="${hello}"></p>
+
+<!--输出带html标签的文本数据-->
+<p th:utext="${demo1}"></p>
+
+<!--循环输出内容-->
+<table>
+    <th>序号</th>
+    <th>编号</th>
+    <th>姓名</th>
+    <th>地址</th>
+    <tr th:each="user,abc:${userList}">
+        <td th:text="${abc.count}"></td>
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.address}"></td>
+    </tr>
+</table>
+
+<!-- 日期展示  -->
+<p th:text="${#dates.format(date, 'yyyy-MM-dd HH:mm:ss')}"></p>
+
+
+<!-- if判断 :条件满足的时候展示,不满足的时候不展示 -->
+<p th:if="${age}>=18">
+    <span>成年人</span>
+</p>
+<p th:if="${age}<18">
+    <span>未成年人</span>
+</p>
+
+<!-- 判断 :条件不满足的时候展示,满足的时候不展示 -->
+<p th:unless="${age}<18">
+    <span>成年人</span>
+</p>
+
+<p th:each="abc,a:${dataMap}">
+    <span th:text="${a.count}"></span>
+    <span th:text="${abc.key}"></span>
+    <span th:text="${abc.value}"></span>
+</p>
+
+<p th:if="${#maps.containsKey(dataMap, 'address')}">
+    是包含address的
+</p>
+
+<p th:unless="${#maps.containsKey(dataMap, 'address')}">
+    是不包含address的
+</p>
+
+<p th:text="${#strings.replace(hello, 'hello','')}"></p>
+
+<p th:text="${#strings.substring(hello, 0,5)}"></p>
+
+<a th:href="@{'http://www.itheima.com/demo/add'(name='刘广',address='云南')}">点我跳转到百度</a>
+
+<a th:href="@{${url}(name='刘广',address='云南')}">点我跳转到百度123</a>
+
+<img th:src="${image}">
+
+<p>输出1-10的数据</p>
+<p th:each="i:${#numbers.sequence(10,1,-1)}">
+    <span th:text="${i}"></span>
+</p>
+</body>
+</html>
